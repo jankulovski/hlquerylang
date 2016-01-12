@@ -7,78 +7,78 @@ use hlql\Query\Query;
 class Edge {
 
     /**
-     * @var EdgeName $name Edge's name
+     * @var string $name Edge's name
      */
-    private EdgeName $name = "";
+    private string $name = "";
 
     /**
-     * @var ? EdgeFields $fields Edge's fields
+     * @var ? Set<string> $fields Edge's fields
      */
-    private ? EdgeFields $fields;
+    private ? Set<string> $fields;
 
     /**
-     * @var ? EdgeEdges $edges Edge's edges
+     * @var ? Map<string, Edge> $edges Edge's edges
      */
-    private ? EdgeEdges $edges;
+    private ? Map<string, Edge> $edges;
 
     /**
-     * @var ? EdgeArguments $args Edge's arguments
+     * @var ? Vector<Pair<string, string>> $args Edge's arguments
      */
-    private ? EdgeArguments $args;
+    private ? Vector<Pair<string, string>> $args;
 
     /**
      * Constructor
      *
-     * @param EdgeName $name Edge's name
+     * @param string $name Edge's name
      * @return void
      */
-    public function __construct(EdgeName $name) {
+    public function __construct(string $name) {
         $this->name = $name;
     }
 
     /**
      * Get Edge's name
      *
-     * @return EdgeName
+     * @return string
      */
-    public function getName(): EdgeName {
+    public function getName(): string {
         return $this->name;
     }
 
     /**
      * Get Edge's edges
      *
-     * @return ? EdgeEdges
+     * @return ? Map<string, Edge>
      */
-    public function getEdges(): ? EdgeEdges {
+    public function getEdges(): ? Map<string, Edge> {
         return $this->edges;
     }
 
     /**
      * Get Edge's fields
      *
-     * @return EdgeFields
+     * @return ? Set<string>
      */
-    public function getFields(): ? EdgeFields {
+    public function getFields(): ? Set<string> {
         return $this->fields;
     }
 
     /**
      * Get Edge's arguments
      *
-     * @return EdgeArguments
+     * @return ? Vector<Pair<string, string>>
      */
-    public function getArguments(): ? EdgeArguments {
+    public function getArguments(): ? Vector<Pair<string, string>> {
         return $this->args;
     }
 
     /**
      * Add field
      *
-     * @param EdgeField $field
+     * @param string $field
      * @return void
      */
-    public function addField(EdgeField $field): void {
+    public function addField(string $field): void {
         if(is_null($this->fields)) {
             $this->fields = Set {};
         }
@@ -101,10 +101,10 @@ class Edge {
     /**
      * Add argument
      *
-     * @param EdgeArgument $argument
+     * @param Pair<string, string> $argument
      * @return void
      */
-    public function addArgument(EdgeArgument $argument): void {
+    public function addArgument(Pair<string, string> $argument): void {
         if(is_null($this->args)) {
             $this->args = Vector {};
         }

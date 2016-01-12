@@ -4,19 +4,6 @@ namespace hlql\Query;
 
 use hlql\Edge\Edge;
 
-type QueryFields = Set<string>;
-type QueryField = string;
-type QueryEdges = Map<string,QueryEdge>;
-type QueryEdge = Vector<mixed>;
-type QueryEdgeName = string;
-
-type EdgeName = string;
-type EdgeFields = Set<string>;
-type EdgeEdges = Map<string, Edge>;
-type EdgeField = string;
-type EdgeArguments = Vector<Pair<string, string>>;
-type EdgeArgument = Pair<string, string>;
-
 enum _query : string as string {
     fields = "fields";
     edges = "edges";
@@ -33,12 +20,12 @@ abstract class QueryParser {
     /**
      * Constructor
      *
-     * @param EdgeName $name Edge's name
+     * @param string $name Edge's name
      * @param KeyedIterable<string, mixed> $query Query
      * @return void
      */
     public function __construct(
-        EdgeName $name,
+        string $name,
         KeyedIterable<string, mixed> $query
     ): void {
         $this->edge = new Edge($name);
@@ -116,18 +103,18 @@ abstract class QueryParser {
     /**
      * Get query name
      *
-     * @return EdgeName
+     * @return string
      */
-    public function getName(): EdgeName {
+    public function getName(): string {
         return $this->edge->getName();
     }
 
     /**
      * Get query fields
      *
-     * @return QueryFields
+     * @return ? Set<string>
      */
-    public function getFields(): ? EdgeFields {
+    public function getFields(): ? Set<string> {
         return $this->edge->getFields();
     }
 
@@ -143,18 +130,18 @@ abstract class QueryParser {
     /**
      * Get query edges
      *
-     * @return QueryEdges
+     * @return ? Map<string, Edge>
      */
-    public function getEdges(): ? EdgeEdges {
+    public function getEdges(): ? Map<string, Edge> {
         return $this->edge->getEdges();
     }
 
     /**
      * Get query arguments
      *
-     * @return QueryArguments
+     * @return ? Vector<Pair<string, string>>
      */
-    public function getArguments(): ? EdgeArguments {
+    public function getArguments(): ? Vector<Pair<string, string>> {
         return $this->edge->getArguments();
     }
 
