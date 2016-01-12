@@ -1,0 +1,23 @@
+{
+    "name": "kik01/hlql",
+    "description": "hlql",
+    "keywords": ["hlql"],
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "hhvm": ">=3.11.0"
+    },
+    "require-dev": {
+		"phpunit/phpunit": ">=5.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "hlql\\": "src/"
+        }
+    },
+	"autoload-dev": {
+        "psr-4": {
+            "hlql\\tests\\": "tests/"
+        }
+    }
+}
