@@ -10,6 +10,13 @@ use hlql\Query\QueryParser;
 class Query extends QueryParser {
 
     /**
+     * @var const string _fields
+     */
+    const string _fields = "fields";
+    const string _edges = "edges";
+    const string _args = "args";
+
+    /**
      * Constructor
      *
      * @param

@@ -146,9 +146,9 @@ class Edge {
     public function __toMap(): Map<string, mixed> {
         return Map {
             $this->getName() => (Map {
-                _query::fields => $this->getFields(),
-                _query::edges => $this->getEdges()?->map($mv ==> $mv->__toMap()->firstValue()),
-                _query::args => $this->getArguments()
+                Query::_fields => $this->getFields(),
+                Query::_edges => $this->getEdges()?->map($mv ==> $mv->__toMap()->firstValue()),
+                Query::_args => $this->getArguments()
             })->filterWithKey( ($mk, $mv) ==> !is_null($mv) )};
     }
 

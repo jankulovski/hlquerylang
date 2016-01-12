@@ -4,12 +4,6 @@ namespace hlql\Query;
 
 use hlql\Edge\Edge;
 
-enum _query : string as string {
-    fields = "fields";
-    edges = "edges";
-    args = "args";
-}
-
 abstract class QueryParser {
 
     /**
@@ -41,14 +35,14 @@ abstract class QueryParser {
      */
     private function parse(Edge $edge, KeyedIterable<string, mixed> $query): Edge {
         foreach($query as $sqk => $sqv) {
-            if($sqk === _query::fields) {
+            if($sqk === Query::_fields) {
                 invariant(($sqv instanceof Container), "Invalid attribute $sqk");
                 $this->parseFields($edge, $sqv);
-            } else if($sqk === _query::edges) {
+            } else if($sqk === Query::_edges) {
                 invariant(($sqv instanceof KeyedIterable), "Invalid attribute $sqk");
                 $this->parseEdges($edge, $sqv);
             }
-            else if($sqk === _query::args) {
+            else if($sqk === Query::_args) {
                 invariant(($sqv instanceof KeyedIterable), "Invalid attribute $sqk");
                 $this->parseArgs($edge, $sqv);
             } else {
