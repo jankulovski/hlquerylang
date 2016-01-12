@@ -2,18 +2,26 @@
 
 namespace hlql\Query;
 
-use hlql\Query\QueryParser;
+use hlql\Query\QueryCore;
 
 /**
  * Query
  */
-class Query extends QueryParser {
+class Query extends QueryCore {
 
     /**
      * @var const string _fields
      */
     const string _fields = "fields";
+
+    /**
+     * @var const string _edges
+     */
     const string _edges = "edges";
+
+    /**
+     * @var const string _args
+     */
     const string _args = "args";
 
     /**

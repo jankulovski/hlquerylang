@@ -4,7 +4,7 @@ namespace hlql\Query;
 
 use hlql\Edge\Edge;
 
-abstract class QueryParser {
+abstract class QueryCore {
 
     /**
      * @var Edge $edge Edge
