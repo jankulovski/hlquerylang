@@ -27,7 +27,7 @@ class Query extends QueryCore {
     /**
      * Constructor
      *
-     * @param
+     * @param KeyedContainer<string, mixed> $query
      * @return void
      */
     public function __construct(
@@ -39,9 +39,6 @@ class Query extends QueryCore {
         $key = $nq->firstKey();
         $value = $nq->firstValue();
 
-        # Invariant shouldn't reach the fail point at any given time, since
-        # Query::__toMap() returns an KeyedIterable, but need to convince the
-        # typechecker we have the right data structure.
         invariant(
             ($value instanceof KeyedIterable),
             'Invalid query structure. Expected KeyedContainer'
