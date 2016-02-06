@@ -33,7 +33,6 @@ class Query extends QueryCore {
     public function __construct(
         KeyedContainer<string, mixed> $query
     ): void {
-
         $nq = Query::__toMap($query);
         $query = null;
         $key = $nq->firstKey();
@@ -65,6 +64,20 @@ class Query extends QueryCore {
             }
         }
         return $ki;
+    }
+
+    /**
+     * Query object from string
+     *
+     * @param string $query
+     * @return Query
+     */
+    public static function fromString(string $query): Query {
+        $queryArray = json_decode($query, true);
+        if(json_last_error() !== JSON_ERROR_NONE) {
+            throw new \Exception(json_last_error_msg());
+        }
+        return new Query($queryArray);
     }
 
 }
